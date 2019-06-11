@@ -1,0 +1,159 @@
+================================================================================
+If you haven't read readme.txt yet... do!
+================================================================================
+
+The JKN catalogue of tools is divided into three categories below.
+
+Most classes beginning with JKN are for your use, but since some are used only
+internally, you're advised to stick to the catalogue below.
+
+Any tool with any usage more involved than "use my functions" has a usage doc
+in the class file.
+
+------
+Legend
+------
+    S:  Static. You are not intended to instantiate this class.
+    C:  Concrete. You must instantiate this class.
+
+    A:  Abstract. You must extend this class.
+    F:  Final. You may not extend this class.
+    E:  Either. You can use this class as-is, or extend it with new behaviour.
+
+    T:  Trait. You must use this class, mixing it into your existing class.
+
+--------------------------------------------------------------------------------
+CORE
+----
+Classes you use while building your space.
+
+
+    CA  JKNModule
+            Extend and instantiate to create your module.
+
+    SF  JKNAPI
+            Static methods to inspect your module's environment.
+    SF  JKNOpts
+            Static methods to work with automatically prefixed options.
+
+    CA  JKNSettingsPage
+            A settings page that handles its menu behaviour and WP hooks.
+            N.B. This class is not "production ready"; you may extend it to add
+            a new type of settings page, but you can use its existing children.
+    CA  JKNSettingsPageWP
+            A settings page that uses the WP API.
+    CE  JKNSettingsPageACF
+            A settings pages that uses the Advanced Custom Fields API.
+            N.B. Requires ACF to appear in the menu.
+
+    CA  JKNPluginDependency
+            Instantiate to have your module depend on a plugin.
+    CA  JKNThemeDependency
+            Instantiate to have your module depend on a theme.
+    CA  JKNModuleDependency
+            Instantiate to have your module depend on another module.
+
+--------------------------------------------------------------------------------
+FUNCTIONS
+---------
+Purely static classes that group useful functions together.
+Many of these are currently in beginning stages, and are intended to grow.
+
+    SF  JKNAjax
+            Functions for qualifying Ajax actions using WP's API.
+    SF  JKNArrays
+            Functions for working with arrays.
+    SF  JKNCDN
+            Functions for working with a CDN. (Currently only uses WP Rocket.)
+    SF  JKNClasses
+            Functions for working with PHP classes.
+    SF  JKNColours
+            Functions for working with colours for CSS.
+    SF  JKNCSS
+            Functions for working with CSS.
+    SF  JKNDebugging
+            Functions for debugging your code as you write it.
+    SF  JKNEditing
+            Functions for working with WP editing filters.
+    SF  JKNFilesystem
+            Functions for working with the server's filesystem.
+    SF  JKNFormatting
+            Functions for formatting miscellaneous types.
+    SF  JKNJavascript
+            Functions for working with Javascript.
+    SF  JKNLayouts
+            Functions for working with prefabricated layouts, such as a grid.
+    SF  JKNMinifying
+            Functions for minifying HTML, CSS, and Javascript (3rd-party).
+    SF  JKNPosts
+            Functions for working with WP posts.
+    SF  JKNStrings
+            Functions for working with strings.
+    SF  JKNTaxonomies
+            Functions for working with WordPress taxonomies, such as categories.
+    SF  JKNTime
+            Functions for working with dates and times.
+
+--------------------------------------------------------------------------------
+SOLUTIONS
+---------
+Classes that involve extension and instantiation.
+These require more work and reading to use, but the payoff can be significant.
+
+    Advanced Custom Fields
+    ----------------------
+    SA  JKNACF
+            Programmatically registers an Advanced Custom Fields field group.
+
+    Caching
+    -------
+    CA  JKNCacheObject
+            Cache your data, read it, and serve it via external URLs.
+    CA  JKNCacheDir
+            Create a directory, unique or template-based, in a cache.
+    CF  JKNCacheRoot
+            Roots your cache system in a directory on the server.
+
+    Custom Post Types
+    -----------------
+    SA  JKNCPT
+            Adds a custom post type with easy yet flexible control over the
+            post list and post editing screen.
+
+    Cron Jobs
+    ---------
+    ST  JKNCron_OneHook_Static
+            Makes cron jobs a cinch: write a function, schedule it, clear it.
+    CT  JKNCron_OneHook
+            Instantiatable variant of JKNCron_OneHook.
+    ST  JKNCron_MultiHook_Static
+            Variant of JKNCron_OneHook with multiple hooks and callbacks.
+    CT  JKNCron_MultiHook
+            Instantiatable variant of JKNCron_MultiHook_Static.
+
+    Rendering
+    ---------
+    ST  JKNRenderer
+            A simple contract for creating consistent front-facing content.
+    ST  JKNRendererSwitch
+            Creates a switchable content area controlled by a dropdown.
+
+    Scheduling (primarily for use with cron)
+    ----------------------------------------
+    CF  JKNSschedule
+            Provides recurrence by minute, hour and/or day, not a specific time.
+    CF  JKNScheduleSingle
+            Calculates the time of a single event using the same principle.
+
+    Time periods
+    ------------
+    CE  JKNTimePeriod
+            Models a time period from a given start date to a given end date.
+    CE  JKNYear
+            Models a year, including methods like next, previous, and contains.
+    CE  JKNAcademicYear
+            Models an academic year with semesters and beginning on Sept 1.
+
+
+================================================================================
+Stay tuned for more, and for updates and expansions to the existing ones. :)
