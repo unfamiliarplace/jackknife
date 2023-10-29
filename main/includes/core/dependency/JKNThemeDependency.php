@@ -7,7 +7,7 @@
 final class JKNThemeDependency extends JKNDependency {
     
     private $name;
-    private $url;
+    private $author_url;
     private $author;
     private $allow_child = true;
 
@@ -22,7 +22,7 @@ final class JKNThemeDependency extends JKNDependency {
         
         parent::__construct($args);
         $this->name = $args['name'];
-        $this->url = $args['url'];
+        $this->author_url = $args['url'];
         $this->author = $args['author'];
         
         if (isset($args['allow_child'])) {
@@ -48,11 +48,11 @@ final class JKNThemeDependency extends JKNDependency {
     }
     
     /**
-     * Return the theme's URL.
+     * Return the theme author's URL.
      *
      * @return string The URL.
      */
-    function get_url(): string { return $this->url; }
+    function author_url(): string { return $this->author_url; }
 
     /**
      * Return true iff the theme is active.
@@ -76,4 +76,22 @@ final class JKNThemeDependency extends JKNDependency {
         return in_array(strtolower($this->name), $allowed_names) &&
                 (strtolower($this->author) == strtolower($theme_author));
     }
+
+	/**
+	 * Return the path to this dependency's folder.
+	 *
+	 * @return string|null The path.
+	 */
+	function path(): string {
+		return sprintf('%swp-content/themes/%s/', ABSPATH, $this->name);
+	}
+
+	/**
+	 * Return the URL to this dependency's folder.
+	 *
+	 * @return string|null The URL.
+	 */
+	function url(): string {
+		return sprintf('%s/%s/', get_theme_root_uri($this->name), $this->name);
+	}
 }

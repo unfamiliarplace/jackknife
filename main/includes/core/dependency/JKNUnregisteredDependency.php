@@ -12,11 +12,11 @@ final class JKNUnregisteredDependency extends JKNDependency {
     function register(): void {}
     
     /**
-     * Return the empty string for the URL.
+     * Return null for the author URL.
      *
      * @return string The empty string.
      */
-    function get_url(): string { return ''; }
+    function author_url(): ?string { return null; }
     
     /**
      * Return a name indicating that this represents an unregistered dependency.
@@ -33,4 +33,18 @@ final class JKNUnregisteredDependency extends JKNDependency {
      * @return bool False.
      */
     function met(): bool { return false; }
+
+	/**
+	 * Return null for no path.
+	 *
+	 * @return string|null The path.
+	 */
+	function path(): ?string { return null; }
+
+	/**
+	 * Return null for no URL.
+	 *
+	 * @return string|null The URL.
+	 */
+	function url(): ?string { return null; }
 }

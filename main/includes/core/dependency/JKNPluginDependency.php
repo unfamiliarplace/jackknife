@@ -7,7 +7,7 @@
 final class JKNPluginDependency extends JKNDependency {
     
     private $name;
-    private $url;
+    private $author_url;
     private $file;
 
 	/**
@@ -20,7 +20,7 @@ final class JKNPluginDependency extends JKNDependency {
     function __construct(array $args) {
         parent::__construct($args);
         $this->name = $args['name'];
-        $this->url = $args['url'];
+        $this->author_url = $args['url'];
         $this->file = $args['file'];
     }
     
@@ -39,11 +39,11 @@ final class JKNPluginDependency extends JKNDependency {
     function get_name(): string { return $this->name; }
     
     /**
-     * Return the plugin's URL.
+     * Return the plugin author's URL.
      *
      * @return string The URL.
      */
-    function get_url(): string { return $this->url; }
+    function author_url(): string { return $this->author_url; }
 
     /**
      * Return true iff the plugin is active.
@@ -55,4 +55,23 @@ final class JKNPluginDependency extends JKNDependency {
         $active_plugin_files = (array) get_option('active_plugins', []);
         return in_array($this->file, $active_plugin_files);
     }
+
+	/**
+	 * Return the path to this dependency's folder.
+	 *
+	 * @return string|null The path.
+	 */
+	function path(): string {
+		return sprintf('%swp-content/plugins/%s/',
+			ABSPATH, explode('/', $this->file)[0]); # ABSPATH has '/'
+	}
+
+	/**
+	 * Return the URL to this dependency's folder.
+	 *
+	 * @return string|null The URL.
+	 */
+	function url(): string {
+		return plugins_url(explode('/', $this->file)[0] . '/');
+	}
 }

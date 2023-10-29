@@ -1,11 +1,25 @@
+=== Jackknife ===
+Contributors: wordpresspokey
+Donate link: https://sawczak.com
+Tags: development
+Tested up to: 6.1
+Stable tag: 1.0.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Jackknife is the plugin that helps you make plugins. It's the amateur developer's friend: an OO framework for working
+with WordPress, and a set of extendable tools designed to ensure quality and reduce hassle.
+
+== Description ==
+
 ================================================================================
 JACKKNIFE
 =========
 
 Author(s):          Luke Sawczak
 Created:            2016
-Last updated:       2018-02-04
-Last documented:    2018-02-04
+Last updated:       2023-10-29
+Last documented:    2023-10-29
 
 ================================================================================
 OVERVIEW
@@ -38,9 +52,9 @@ To set up your Jackknife extension, you should make two files. One is a main
 plugin file, e.g. myplugins/myplugin.php in the WP plugins folder. This one will
 simply hook onto the Jackknife hook. This lets you load only if JKN is active:
 
-add_action( 'jkn_register', function() { require_once 'jkn_api.php'; } );
+add_action( 'jkn_register', function() { require_once 'registry.php'; } );
 
-The second file is jkn_api.php, and it's where you'll register your space.
+The second file is registry.php, and it's where you'll register your space.
 
     a. Create the space and set up its menu (icon, order, hide page from user):
             $space = JKNAPI::create_space( 'prefix', 'Name' );

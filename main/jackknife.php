@@ -4,8 +4,8 @@
  Plugin URI: https://sawczak.ca
  Description: A framework for simple plugin creation, focused on modularity.
  Author: Luke Sawczak
- Version: 1.3
- Author URI: https://sawczak.ca
+ Version: 1.0.0
+ Author URI: https://sawczak.com
  */
 
 // Set constants and include classes
@@ -15,7 +15,7 @@ require_once 'includes.php';
 
 // Add a quick craptastic test
 //add_action(JKN_HOOK, function(): void {
-//	require_once 'includes/test/jkn_api.php'; }
+//	require_once 'includes/test/registry.php'; }
 //);
 
 /**

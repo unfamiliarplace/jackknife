@@ -51,7 +51,7 @@ final class JKNModuleDependency extends JKNDependency {
      *
      * @return string|null A null external link.
      */
-    final function get_url(): ?string { return null; }
+    final function author_url(): ?string { return null; }
     
     /**
      * Return true iff the module can be activated.
@@ -61,4 +61,18 @@ final class JKNModuleDependency extends JKNDependency {
     final function met(): bool {
         return $this->module()->current_state() == JKNLifecycle::ON_CAN_ACTIVATE;
     }
+
+	/**
+	 * Return the path to the module's folder.
+	 *
+	 * @return string|null The path.
+	 */
+	function path(): string { return $this->module()->path(); }
+
+	/**
+	 * Return the URL to the module's folder.
+	 *
+	 * @return string|null The URL.
+	 */
+	function url(): ?string { return $this->module()->url(); }
 }

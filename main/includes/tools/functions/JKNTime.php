@@ -111,7 +111,8 @@ final class JKNTime {
 	 * @return DateTime
 	 */
 	static function dt_timestamp(int $ts, string $tz=JKN_TIMEZONE): DateTime {
-		return self::dt(sprintf('@%s', $ts), $tz);
+		// Timezone is ignored by DateTime constructor if it's a Unix timestamp
+		return self::dt(date('Y-m-d H:i:s', $ts), $tz);
 	}
 
 	/**
@@ -133,7 +134,7 @@ final class JKNTime {
 	 * @return DateTime
 	 */
 	static function dt_pid(string $pid, string $tz=JKN_TIMEZONE): DateTime {
-		return self::dt_timestamp(get_the_time('U', $pid), $tz);
+		return self::dt(get_the_time('Y-m-d H:i:s', $pid), $tz);
 	}
 
 	/**

@@ -356,8 +356,8 @@ final class JKNModulesPageSettings extends JKNSettingsPageWP {
         // Determine dependency colour
         $colour_class = ($met) ? self::cl_dep_met : self::cl_dep_unmet;
         
-        // Get the dependency's URL
-        $url = $dep->get_url();
+        // Get the dependency author's URL
+        $url = $dep->author_url();
         
         // Get the text shown: a link if there is a URL, otherwise just text
         $inner = $dep->get_name();

@@ -496,7 +496,74 @@ final class JKNAPI {
     static function theme_dep_met(string $id): bool {
         return self::registry()->get_theme_dependency($id)->met();
     }
-    
+
+
+	/*
+	 * =========================================================================
+	 * Dependency paths and URLs
+	 * =========================================================================
+	 */
+
+	/**
+	 * Return the path of the module dependency with the given ID.
+	 *
+	 * @param string $id The dependency's ID.
+	 * @return string The path.
+	 */
+	static function module_dep_path(string $id): string {
+		return self::registry()->get_module_dependency($id)->path();
+	}
+
+	/**
+	 * Return the url of the module dependency with the given ID.
+	 *
+	 * @param string $id The dependency's ID.
+	 * @return string The URL.
+	 */
+	static function module_dep_url(string $id): string {
+		return self::registry()->get_module_dependency($id)->url();
+	}
+
+	/**
+	 * Return the path of the theme dependency with the given ID.
+	 *
+	 * @param string $id The dependency's ID.
+	 * @return string The path.
+	 */
+	static function theme_dep_path(string $id): string {
+		return self::registry()->get_theme_dependency($id)->path();
+	}
+
+	/**
+	 * Return the url of the theme dependency with the given ID.
+	 *
+	 * @param string $id The dependency's ID.
+	 * @return string The URL.
+	 */
+	static function theme_dep_url(string $id): string {
+		return self::registry()->get_theme_dependency($id)->url();
+	}
+
+	/**
+	 * Return the path of the plugin dependency with the given ID.
+	 *
+	 * @param string $id The dependency's ID.
+	 * @return string The path.
+	 */
+	static function plugin_dep_path(string $id): string {
+		return self::registry()->get_plugin_dependency($id)->path();
+	}
+
+	/**
+	 * Return the url of the plugin dependency with the given ID.
+	 *
+	 * @param string $id The dependency's ID.
+	 * @return string The URL.
+	 */
+	static function plugin_dep_url(string $id): string {
+		return self::registry()->get_plugin_dependency($id)->url();
+	}
+
     
     /*
      * =========================================================================

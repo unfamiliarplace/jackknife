@@ -38,11 +38,11 @@ abstract class JKNDependency {
     abstract function get_name(): string;
     
     /**
-     * Return a URL. This may be null in a child class.
+     * Return an author URL. This may be null in a child class.
      *
      * @return string The URL, if there is one.
      */
-    abstract function get_url(): ?string;
+    abstract function author_url(): ?string;
 
     /**
      * Return true iff this dependency is met.
@@ -50,4 +50,18 @@ abstract class JKNDependency {
      * @return bool Whether this dependency is met.
      */
     abstract function met(): bool;
+
+    /**
+     * Return the path to this dependency's folder.
+     *
+     * @return string|null The path.
+     */
+    abstract function path(): ?string;
+
+	/**
+	 * Return the URL to this dependency's folder.
+	 *
+	 * @return string|null The URL.
+	 */
+	abstract function url(): ?string;
 }

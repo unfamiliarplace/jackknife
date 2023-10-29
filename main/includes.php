@@ -99,8 +99,3 @@ require_once 'includes/tools/solutions/renderer/JKNRendererSwitch.php';
 // Solutions > schedule
 require_once 'includes/tools/solutions/schedule/JKNSchedule.php';
 require_once 'includes/tools/solutions/schedule/JKNScheduleSingle.php';
-
-// Solutions > time_period
-require_once 'includes/tools/solutions/time_period/JKNTimePeriod.php';
-require_once 'includes/tools/solutions/time_period/JKNYear.php';
-require_once 'includes/tools/solutions/time_period/JKNAcademicYear.php';

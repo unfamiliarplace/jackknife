@@ -20,7 +20,7 @@ Legend
     F:  Final. You may not extend this class.
     E:  Either. You can use this class as-is, or extend it with new behaviour.
 
-    T:  Trait. You must use this class, mixing it into your existing class.
+    T:  Trait. You must use this class by mixing it into your existing class.
 
 --------------------------------------------------------------------------------
 CORE

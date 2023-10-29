@@ -1,7 +1,7 @@
 <?php
 
 /**
- * A variant of a renderer that provides the abiltiy to switch between various
+ * A variant of a renderer that provides the ability to switch between various
  * kinds of content. It has a select dropdown, and whenever it is switched,
  * the content is reloaded. The initial content is pre-rendered.
  * You can also load a particular option on page ready by using a get parameter.
@@ -91,7 +91,7 @@ abstract class JKNRendererSwitch extends JKNRenderer {
 	 * @return string
 	 */
 	protected static function show_on_load(): ?string {
-		$options = static::switch_options();
+		$options = static::_switch_options();
 		return reset($options)['value'];
 	}
 
@@ -111,6 +111,14 @@ abstract class JKNRendererSwitch extends JKNRenderer {
 	 * Do not override
 	 * =========================================================================
 	 */
+
+	/*
+	 * =========================================================================
+	 * Static variables
+	 * =========================================================================
+	 */
+
+	protected static $saved_switch_options = null;
 
 	/*
 	 * =========================================================================
@@ -208,7 +216,7 @@ abstract class JKNRendererSwitch extends JKNRenderer {
 	protected final static function validate_option(string $data): bool {
 
 		// Data is defined as OK if it matches the value of one of the options
-		$options = static::switch_options();
+		$options = static::_switch_options();
 		foreach($options as $option) {
 			if ($option['value'] == $data) {
 				return true;
@@ -277,6 +285,19 @@ abstract class JKNRendererSwitch extends JKNRenderer {
 	 */
 
 	/**
+	 * Return the memorized switch options (get them first if not memorized).
+	 *
+	 * @return string[]
+	 */
+	protected static function _switch_options(): array {
+		if (is_null(static::$saved_switch_options)) {
+			static::$saved_switch_options = static::switch_options();
+		}
+
+		return static::$saved_switch_options;
+	}
+
+	/**
 	 * Return an array of [$tag => [$subtag => [$value_1, $value_2...]]
 	 * for the HTML tags presumed necessary to generate this page.
 	 *
@@ -304,7 +325,7 @@ abstract class JKNRendererSwitch extends JKNRenderer {
 		$table = [];
 
 		// Sanitize each option value for a div id
-		foreach(static::switch_options() as $option) {
+		foreach(static::_switch_options() as $option) {
 			$val = $option['value'];
 			$table[$val] = sprintf('jkn-rdr-%s', JKNStrings::sanitize($val));
 		}
@@ -352,7 +373,7 @@ abstract class JKNRendererSwitch extends JKNRenderer {
 	protected final static function switcher(): string {
 		$html = '';
 
-		$options = static::switch_options();
+		$options = static::_switch_options();
 
 		$show_on_load = static::show_on_load();
 		if (is_null($show_on_load)) {
